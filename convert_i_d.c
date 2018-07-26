@@ -6,7 +6,7 @@
 /*   By: kykim <kykim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 11:18:55 by kykim             #+#    #+#             */
-/*   Updated: 2018/07/26 00:00:50 by kykim            ###   ########.fr       */
+/*   Updated: 2018/07/26 00:13:53 by kykim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ int			convert_i_d(int info[4], va_list ap)
 
 	printed_byte = 0;
 	num = length_convert_i(info, ap);
-	printf("num is %jd\n", num);
 	buffsize = bigger(info[2], bigger(info[1], digit(num)));
 	if (buffsize == digit(num))
 		return (buff_same_digit(info, num, buffsize));
