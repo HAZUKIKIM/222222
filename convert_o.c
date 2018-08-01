@@ -6,7 +6,7 @@
 /*   By: kykim <kykim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/24 23:29:10 by kykim             #+#    #+#             */
-/*   Updated: 2018/07/31 18:28:21 by kykim            ###   ########.fr       */
+/*   Updated: 2018/08/01 12:15:01 by kykim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ int	same_oct_digit(int info[4], uintmax_t num, int digit)
 	if ((info[0] / 10000) == 1)
 	{
 		ft_putstr("0");
+		if (num == 0)
+			return (1);
 		buffsize += 1;
 	}
 	if (info[2] == 0)
