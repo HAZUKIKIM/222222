@@ -6,7 +6,7 @@
 #    By: kykim <kykim@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/07/25 14:16:54 by kykim             #+#    #+#              #
-#    Updated: 2018/07/25 19:34:25 by kykim            ###   ########.fr        #
+#    Updated: 2018/07/31 18:10:27 by kykim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,9 +14,9 @@ NAME = libftprintf.a
 
 SRCS = convert_c_cc.c \
 	   convert_i_d.c \
-	   convert_i_d2.c \
 	   convert_o.c \
 	   convert_o2.c \
+	   convert_o3.c \
 	   convert_p.c \
 	   convert_s.c \
 	   convert_s2.c \
@@ -33,6 +33,9 @@ SRCS = convert_c_cc.c \
 	   ft_printf.c \
 	   specifier.c \
 	   convert_percent.c \
+	   convert_id.c \
+	   convert_id2.c \
+	   convert_id3.c \
 
 SRCO = $(SRCS:.c=.o)
 

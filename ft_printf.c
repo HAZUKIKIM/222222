@@ -6,7 +6,7 @@
 /*   By: kykim <kykim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/17 11:58:09 by kykim             #+#    #+#             */
-/*   Updated: 2018/07/26 00:06:20 by kykim            ###   ########.fr       */
+/*   Updated: 2018/07/31 16:47:02 by kykim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ int	ft_printf(const char *str, ...)
 		if (str[i] == '%')
 		{
 			i = allcheck(str, i, info, ap);
-			//printf("flag is %d\nwidth is %d\nperci is %d\n",info[0], info[1], info[2]);
 			count = specifier_1(info, ap, str[i], count);
 			count = specifier_2(info, ap, str[i], count);
 			i++;

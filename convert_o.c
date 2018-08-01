@@ -6,7 +6,7 @@
 /*   By: kykim <kykim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/24 23:29:10 by kykim             #+#    #+#             */
-/*   Updated: 2018/07/25 11:16:32 by kykim            ###   ########.fr       */
+/*   Updated: 2018/07/31 18:28:21 by kykim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,12 @@ int	same_oct_digit(int info[4], uintmax_t num, int digit)
 	{
 		ft_putstr("0");
 		buffsize += 1;
+	}
+	if (info[2] == 0)
+	{
+		if ((info[0] / 10000) == 1)
+			return (1);
+		return (0);
 	}
 	print_oct_o(num);
 	return (buffsize);
@@ -48,6 +54,8 @@ int	same_oct_width(int info[4], uintmax_t num, int digit)
 	int i;
 
 	i = 0;
+	if (info[2] == 0)
+		return (no_p_octal(info));
 	if ((info[0] / 10000) == 0)
 		buffsize = width_without_hash_o(info, num, digit, i);
 	else
@@ -76,12 +84,22 @@ int	convert_o(int info[4], va_list ap)
 	num = length_convert_o(info, ap);
 	digit = oct_digit(num);
 	buffsize = bigger(info[2], bigger(info[1], digit));
-	if (buffsize == digit)
-		buffsize = same_oct_digit(info, num, digit);
-	else if (buffsize == info[2])
-		buffsize = same_oct_precision(info, num, digit);
-	else if (buffsize == info[1])
-		buffsize = same_oct_width(info, num, digit);
+	if (info[2] != -1)
+	{
+		if (buffsize == digit)
+			buffsize = same_oct_digit(info, num, digit);
+		else if (buffsize == info[2])
+			buffsize = same_oct_precision(info, num, digit);
+		else if (buffsize == info[1])
+			buffsize = same_oct_width(info, num, digit);
+	}
+	else
+	{
+		if (buffsize == digit)
+			buffsize = same_oct_digit(info, num, digit);
+		else if (buffsize == info[1])
+			buffsize = same_oct_width_no_p(info, num, digit);
+	}
 	return (buffsize);
 }
 

@@ -6,7 +6,7 @@
 /*   By: kykim <kykim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/18 21:01:28 by kykim             #+#    #+#             */
-/*   Updated: 2018/07/25 18:18:38 by kykim            ###   ########.fr       */
+/*   Updated: 2018/07/26 13:35:39 by kykim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	yes_flag(int info[4], int buffsize, char *buff, char *str)
 	i = 0;
 	if (info[2] != -1)
 	{
-		while (i < smaller(buffsize, info[2]))
+		while (i < smaller(ft_strlen(str), info[2]))
 		{
 			buff[i] = str[i];
 			i++;
@@ -57,7 +57,7 @@ void	yes_flag(int info[4], int buffsize, char *buff, char *str)
 	}
 }
 
-void	no_flag(int buffsize, char *buff, char *str)
+void	no_flag(int info[4], int buffsize, char *buff, char *str)
 {
 	int i;
 	int j;
@@ -66,16 +66,16 @@ void	no_flag(int buffsize, char *buff, char *str)
 	j = 0;
 	while (i < buffsize - ft_strlen(str))
 		buff[i++] = ' ';
-	// if (info[2] == -1)
-	// {
-	// 	while (i < buffsize - ft_strlen(str))
-	// 		buff[i++] = ' ';
-	// }
-	// else
-	// {
-	// 	while (i < buffsize - info[2])
-	// 		buff[i++] = ' ';
-	// }
+	if (info[2] == -1)
+	{
+		while (i < buffsize - ft_strlen(str))
+			buff[i++] = ' ';
+	}
+	else
+	{
+		while (i < buffsize - info[2])
+			buff[i++] = ' ';
+	}
 	while (i < buffsize)
 	{
 		buff[i] = str[j];
@@ -93,13 +93,18 @@ int		convert_s(int info[4], va_list ap)
 
 	i = 0;
 	str = va_arg(ap, char *);
+	if (str == NULL)
+	{
+		ft_putstr("(null)");
+		return (6);
+	}
 	buffsize = setbuffsize(info, ft_strlen(str));
 	buff = (char *)malloc(sizeof(char) * (buffsize + 1));
 	buff[buffsize] = '\0';
 	if (((info[0] % 1000) / 100) == 1)
 		yes_flag(info, buffsize, buff, str);
 	else
-		no_flag(buffsize, buff, str);
+		no_flag(info, buffsize, buff, str);
 	ft_putstr(buff);
 	free(buff);
 	return (buffsize);

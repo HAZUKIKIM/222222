@@ -6,11 +6,35 @@
 /*   By: kykim <kykim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 11:19:11 by kykim             #+#    #+#             */
-/*   Updated: 2018/07/25 20:35:13 by kykim            ###   ########.fr       */
+/*   Updated: 2018/07/31 18:36:45 by kykim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+void	u_buff_same_width2(int info[4], int digit, uintmax_t num)
+{
+	int i;
+
+	i = 0;
+	if (((info[0] % 10000) / 1000) == 1)
+	{
+		while (i++ < info[1] - bigger(info[2], digit))
+			ft_putchar('0');
+		i = 0;
+		while (i++ < info[2] - digit)
+			ft_putchar('0');
+	}
+	else
+	{
+		while (i++ < info[1] - bigger(info[2], digit))
+			ft_putchar(' ');
+		i = 0;
+		while (i++ < info[2] - digit)
+			ft_putchar('0');
+	}
+	ft_putonly_unbr(num);
+}
 
 void	u_buff_same_width(int info[4], int digit, uintmax_t num)
 {
@@ -27,14 +51,7 @@ void	u_buff_same_width(int info[4], int digit, uintmax_t num)
 			ft_putchar(' ');
 	}
 	else
-	{
-		while (i++ < info[1] - bigger(info[2], digit))
-			ft_putchar(' ');
-		i = 0;
-		while (i++ < info[2] - digit)
-			ft_putchar('0');
-		ft_putonly_unbr(num);
-	}
+		u_buff_same_width2(info, digit, num);
 }
 
 int		convert_u(int info[4], va_list ap)

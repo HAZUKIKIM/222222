@@ -6,7 +6,7 @@
 /*   By: kykim <kykim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 15:31:32 by kykim             #+#    #+#             */
-/*   Updated: 2018/07/25 19:04:14 by kykim            ###   ########.fr       */
+/*   Updated: 2018/07/30 09:39:07 by kykim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	specifier_1(int info[4], va_list ap, char c, int count)
 	else if (c == 'p')
 		num = convert_p(info, ap);
 	else if (c == 'd' || c == 'i')
-		num = convert_i_d(info, ap);
+		num = convert_id(info, ap);
 	else if (c == 'D')
 		num = convert_i_larged(info, ap);
 	else if (c == '%')
