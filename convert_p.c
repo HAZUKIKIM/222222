@@ -6,7 +6,7 @@
 /*   By: kykim <kykim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 11:52:36 by kykim             #+#    #+#             */
-/*   Updated: 2018/07/25 14:25:23 by kykim            ###   ########.fr       */
+/*   Updated: 2018/08/01 12:42:54 by kykim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	convert_p_width(int info[4], uintmax_t ptr, int digit)
 	int i;
 
 	i = 0;
-	if ((info[0] % 1000) / 100 == 1)
+	if ((info[0] % 1000) / 100 != 1)
 	{
 		while (i++ < info[1] - digit)
 			ft_putchar(' ');
