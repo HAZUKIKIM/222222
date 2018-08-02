@@ -6,7 +6,7 @@
 /*   By: kykim <kykim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/31 17:59:17 by kykim             #+#    #+#             */
-/*   Updated: 2018/07/31 18:16:17 by kykim            ###   ########.fr       */
+/*   Updated: 2018/08/01 21:36:13 by kykim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int		no_p_width(intmax_t num, int info[4], int buffsize, int digitvalue)
 		i = 1;
 	}
 	printrealnum(num);
-	if (info[1] - digitvalue > 1)
+	if (info[1] - digitvalue > 0)
 	{
 		while (i < info[1] - digitvalue)
 		{
