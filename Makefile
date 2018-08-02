@@ -3,59 +3,31 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: kykim <kykim@student.42.fr>                +#+  +:+       +#+         #
+#    By: hmiyake <hmiyake@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2018/07/25 14:16:54 by kykim             #+#    #+#              #
-#    Updated: 2018/07/31 18:10:27 by kykim            ###   ########.fr        #
+#    Created: 2018/01/22 10:53:12 by hmiyake           #+#    #+#              #
+#    Updated: 2018/07/26 18:19:58 by hmiyake          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 
-SRCS = convert_c_cc.c \
-	   convert_i_d.c \
-	   convert_o.c \
-	   convert_o2.c \
-	   convert_o3.c \
-	   convert_p.c \
-	   convert_s.c \
-	   convert_s2.c \
-	   convert_u.c \
-	   convert_x.c \
-	   convert_x2.c \
-	   convert_x3.c \
-	   convert_x4.c \
-	   etc.c \
-	   etc2.c \
-	   etc3.c \
-	   etc4.c \
-	   parsing.c \
-	   ft_printf.c \
-	   specifier.c \
-	   convert_percent.c \
-	   convert_id.c \
-	   convert_id2.c \
-	   convert_id3.c \
+SRCS = *.c
 
-SRCO = $(SRCS:.c=.o)
+SRCO = *.o
 
-HEADER = ft_printf.h
-
-FLAG = -Wall -Wextra -Werror
+INCLUDES = ft_printf.h
 
 all: $(NAME)
 
-$(NAME) :
-	gcc -c $(FLAG) -I $(HEADER) $(SRCS)
-	ar rcs $(NAME) $(SRCO)
-	ranlib $(NAME)
-
-clean :
-	rm -f $(SRCO)
+$(NAME):
+	@gcc -Wall -Werror -Wextra -c $(SRCS) -I$(INCLUDES)
+	@ar rc $(NAME) $(SRCO)
+	@ranlib $(NAME)
+clean:
+	@rm -f $(SRCO)
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re: fclean all
-
-.PHONY: all, clean, fclean, re
